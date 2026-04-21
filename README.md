@@ -7,23 +7,64 @@ This demo allows the user to test our various IThreadableCommand Image processin
 This is the C# version of this sample application. A [VB.NET version](https://github.com/AtalaSupport/DemoGallery_Desktop_ThreadedCommandDemo_VB_x64) is also available.
 
 
-## Prerequisites
-This demo assumes you have the Atalasoft DotImage SDK installed and licensed for DotImage Document Imaging. If you wish to use additional codecs such as PDF, you need the relevant licensing. You may also request a 30 day evaluation when installing / activating.
+## Licensing
+This application requires a license for DotImage Document Imaging. If you wish to have PDF support, you can add our PdfReader addon licensing. You may also request a 30 day evaulation if youre evaluating if DotImage / our OCR is right for you.
+
+
+## SDK Dependencies
+This app was built based on 2026.2.0.0. It targets .NET Framework 4.6.2 and was created in Visual Studio 2022. You must have our SDK installed (and licesed per above)
 
 [Download DotImage](https://www.atalasoft.com/BeginDownload/DotImageDownloadPage)
 
 
+### Using NuGet for SDK Dependencies
+We do publish our SDK components to NuGet. We have chosen to base the demo on local installed SDK because this leads to much smaller applications (NuGet packages add a lot of overhead due to the way they're packaged and deployed, and many of our demos -- including this one -- are often used to reproduce issues that need to be submitted to support. Apps that use NuGet are often significantly larger and run up against our maximum support case upload size)
+
+Still, if you wish to use NuGet for the dependencies instead of relying on locally installed SDK, you can.
+
+- Take note of each of the references we've included:
+    - Atalasoft.DotImage.dll
+    - Atalasoft.DotImage.Dicom.dll
+    - Atalasoft.DotImage.Dwg.dll
+    - Atalasoft.DotImage.Heif.dll
+    - Atalasoft.DotImage.Jbig2.dll
+    - Atalasoft.DotImage.Jpeg2000.dll
+    - Atalasoft.DotImage.Lib.dll
+    - Atalasoft.DotImage.Pdf.dll
+    - Atalasoft.DotImage.PdfDoc.Bridge.dll
+    - Atalasoft.DotImage.PdfReader.dll
+    - Atalasoft.DotImage.Raw.dll
+    - Atalasoft.DotImage.WinControls.dll
+    - Atalasoft.PdfDoc.dll
+    - Atalasoft.Shared.dll
+- Remove those referneces
+- Open the NuGet Package Manger from `Tools -> NuGet Package Manager -> Manage NuGet Packages for this Solution`
+- Browse for and install  Atalasoft.DotImage.WinControls.x64 - It will pull in DotImage Document Imaging (the base SDK) and our windows controls and shared dll
+- Browse for and install Atalasoft.Dwg.x64. (optional if you wish to have support for DWG and other CADD files)
+- Browse for and install Atalasoft.Dicom.x64. (optional if you wish to have support for Dicom files)
+- Browse for and install Atalasoft.Heif.x64. (optional if you wish to have support for HEIF/HEIC files)
+- Browse for and install Atalasoft.Jbig2.x64. (optional if you wish to have support for Jbig2 files)
+- Browse for and install Atalasoft.Jpeg2000.x64. (optional if you wish to have support for Jpeg2000 files)
+- Browse for and install Atalasoft.Pdf.x64  to bring in the PdfEncoder
+- Browse for and install Atalasoft.PdfReader.x64. (optional if you wish to have support for PDF files)
+- Browse for and install Atalasoft.Raw.x64. (optional if you wish to have support for RAW files)
+
+
+## Downloading source
+The sources can be downloaded for [c#](https://github.com/AtalaSupport/DemoGallery_Desktop_ThreadedCommandDemo_CS_x64/archive/refs/heads/main.zip) and [VB.NET](https://github.com/AtalaSupport/DemoGallery_Desktop_ThreadedCommandDemo_VB_x64/archive/refs/heads/main.zip)
+
+
 ## Cloning
-We recommend the following
+We recommend the following to ensure you clone with the required submodule
 
 Example: git for windows
 ```bash
-git clone https://github.com/AtalaSupport/DemoGallery_Desktop_ThreadedCommandDemo_CS_x64.git ThreadedCommandDemo
+git clone https://github.com/AtalaSupport/DemoGallery_Desktop_ThreadedCommandDemo_CS_x64.git ThreadedCommandDemo --recursive
 cd ThreadedCommandDemo
 git submodule init
 git submodule update
-git pull
 ```
+
 
 ## Related documentation
 In addition to this README, the Atalasoft documentation set includes the following:  
